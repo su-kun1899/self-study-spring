@@ -43,7 +43,7 @@ public class JdbcMemoRepository implements MemoRepository {
 
   @Override
   public void save(Memo item) {
-    getJdbcTemplate().update("INSERT INTO MEMO (MEMO, AUTHOR, CREATED) VALUES (?, ?, CURRENT_TIMESTAMP)",
+    getJdbcTemplate().update("INSERT INTO MEMO (MEMO, AUTHOR, CREATED) VALUES (?, ?, CURRENT_TIME)",
         item.getMemo(), item.getAuthor());
   }
 
