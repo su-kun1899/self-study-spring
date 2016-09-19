@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import red.sukun1899.sss.aspect.ExceptionControllerAdvice;
 import red.sukun1899.sss.model.Memo;
 import red.sukun1899.sss.service.MemoService;
 
@@ -56,6 +57,11 @@ public class MemoController {
   public String post(@ModelAttribute Memo item, Model model) {
     getMemoService().write(item.getMemo(), item.getAuthor());
     return "redirect:/memo";
+  }
+
+  @RequestMapping("error")
+  public String getError(Model model) {
+    throw new ExceptionControllerAdvice.MemoException();
   }
 
   public MemoService getMemoService() {
